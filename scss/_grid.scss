@@ -1,0 +1,52 @@
+$horizontalGap: 6rem;
+$verticalGap: 6rem;
+$gridWidth: 114rem;
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.row {
+    @include clearfix;
+
+    background: #b9b9b9;
+    margin: 0 auto;
+    //max-width zastosowalismy z rozwaga.
+    //Proszę zerknijmy jak będzie wyglądało to z samym width
+    max-width: $gridWidth;
+
+    //usuwamy marginesy z dolu dla ostatniego elementu row
+    &:not(:last-child) {
+        margin-bottom: $verticalGap;
+    }
+    
+    .col-1-1 {
+        max-width: 100%;
+    }
+    
+    .col-1-2 {
+        background: orange;
+        //stosujac calc mozemy operowac na roznych jednostakch wielkosci, px, %, rem bez sprowadzania do wspolnego mianownika
+        //przy zastosowaniu funkcji calc oraz zmiennych musimy stosować odpowiedni format #{$name} = value of name
+        width: calc((100% - #{$horizontalGap})/2);
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $horizontalGap;
+        }
+    }
+    
+    .col-1-3 {
+        background: orange;
+        width: calc((100% - (#{$horizontalGap}*2))/3);
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $horizontalGap;
+        }
+    }
+}
+
+
+

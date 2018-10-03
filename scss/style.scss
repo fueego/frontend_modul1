@@ -1,0 +1,10 @@
+@import 'mixins';
+@import 'grid';
+
+//16px to defaultowa wartosc font-size, ustawiana przez przeglądarki
+//W celu latwiejszych obliczen zmienimy czcionke na 10px co da nam 1rem = 10px
+html {
+    //font-size: 10px; - ustawienie na sztywno wartosci 10px w html, wytnie w pien, mozliwosc zmiany defaultowej wielkosci czcionki dla przegladarki
+    //zamiast tego zastosujemy procenty ;), 
+    font-size: 62.5% //dalej jednak chcemy latwo obliczac 1rem, powinien dawac 10px, zatem 10 px z 16 to 62,5%
+}
