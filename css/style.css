@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 html, body {
   margin: 0px;
   padding: 0px; }
@@ -26,3 +27,52 @@ html, body {
     float: left; }
     .row .col-1-3:not(:last-child) {
       margin-right: 6rem; }
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6rem; }
+
+header.main-header {
+  height: 85vh;
+  width: 100%;
+  background-image: linear-gradient(to right bottom, rgba(42, 104, 204, 0.6), #204f9b), url(../img/header_bg.jpg);
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  position: relative; }
+  header.main-header .main-header__logo {
+    position: relative; }
+    header.main-header .main-header__logo img {
+      height: 10rem;
+      position: absolute;
+      top: 2.5rem;
+      left: 2.5rem; }
+  header.main-header .main-header__text {
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    color: #fff;
+    text-transform: uppercase; }
+    header.main-header .main-header__text .main-header__text--title {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: 2rem;
+      line-height: 7rem;
+      white-space: nowrap; }
+    header.main-header .main-header__text .main-header__text--subtitle {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: .95rem;
+      white-space: nowrap; }

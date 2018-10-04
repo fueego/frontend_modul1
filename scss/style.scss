@@ -1,10 +1,81 @@
 @import 'mixins';
 @import 'grid';
 
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+//Variables
+$lightBlue: #2a68cc;
+$darkBlue: #204f9b;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 //16px to defaultowa wartosc font-size, ustawiana przez przeglądarki
 //W celu latwiejszych obliczen zmienimy czcionke na 10px co da nam 1rem = 10px
 html {
     //font-size: 10px; - ustawienie na sztywno wartosci 10px w html, wytnie w pien, mozliwosc zmiany defaultowej wielkosci czcionki dla przegladarki
     //zamiast tego zastosujemy procenty ;), 
     font-size: 62.5% //dalej jednak chcemy latwo obliczac 1rem, powinien dawac 10px, zatem 10 px z 16 to 62,5%
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6rem;
+}
+
+header.main-header {
+    height: 85vh; //vh to jednostka "view-height" obliczana na podstawie wolnego miejsca na wyswietlaczu
+    width: 100%;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($lightBlue, .6),
+        rgba($darkBlue, 1),
+    ), url(../img/header_bg.jpg);
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    position: relative;
+
+    .main-header__logo {
+        position: relative;
+        
+        img {
+            height: 10rem;
+            position: absolute;
+            top: 2.5rem;
+            left: 2.5rem;
+        }
+    }
+
+    .main-header__text {
+
+        position: absolute;
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        top: 40%;
+        left: 50%;
+        
+        color: #fff;
+        text-transform: uppercase;
+
+        .main-header__text--title {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: 2rem;
+            line-height: 7rem;
+            white-space: nowrap;
+        }
+
+        .main-header__text--subtitle {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: .95rem;
+            white-space: nowrap;
+        }
+    }
 }
