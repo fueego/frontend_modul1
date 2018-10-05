@@ -1,6 +1,7 @@
 $horizontalGap: 6rem;
 $verticalGap: 6rem;
 $gridWidth: 114rem;
+$internalPaddign: 10px;
 
 html, body {
     margin: 0px;
@@ -10,11 +11,14 @@ html, body {
 .row {
     @include clearfix;
 
-    background: #b9b9b9;
     margin: 0 auto;
     //max-width zastosowalismy z rozwaga.
     //Proszę zerknijmy jak będzie wyglądało to z samym width
     max-width: $gridWidth;
+
+    p {
+        padding: 2.5rem 0;
+    }
 
     //usuwamy marginesy z dolu dla ostatniego elementu row
     &:not(:last-child) {
@@ -23,14 +27,15 @@ html, body {
     
     .col-1-1 {
         max-width: 100%;
+        padding: $internalPaddign;
     }
     
     .col-1-2 {
-        background: orange;
         //stosujac calc mozemy operowac na roznych jednostakch wielkosci, px, %, rem bez sprowadzania do wspolnego mianownika
         //przy zastosowaniu funkcji calc oraz zmiennych musimy stosować odpowiedni format #{$name} = value of name
         width: calc((100% - #{$horizontalGap})/2);
         float: left;
+        padding: $internalPaddign;
 
         &:not(:last-child) {
             margin-right: $horizontalGap;
@@ -38,9 +43,9 @@ html, body {
     }
     
     .col-1-3 {
-        background: orange;
         width: calc((100% - (#{$horizontalGap}*2))/3);
         float: left;
+        padding: $internalPaddign;
 
         &:not(:last-child) {
             margin-right: $horizontalGap;

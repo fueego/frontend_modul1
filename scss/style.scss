@@ -6,6 +6,7 @@
 //Variables
 $lightBlue: #2a68cc;
 $darkBlue: #204f9b;
+$fontColor: #969696;
 
 * {
     margin: 0px;
@@ -25,7 +26,8 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    line-height: 1.6rem;
+    line-height: 3rem;
+    color: $fontColor;
 }
 
 header.main-header {
@@ -49,6 +51,7 @@ header.main-header {
             position: absolute;
             top: 2.5rem;
             left: 2.5rem;
+            opacity: .9;
         }
     }
 
@@ -76,6 +79,48 @@ header.main-header {
             font-weight: 400;
             letter-spacing: .95rem;
             white-space: nowrap;
+        }
+    }
+}
+
+.title {
+    padding: 4rem;
+    width: 100%;
+    
+    h2 {
+        text-align: center;
+    }
+}
+
+.main-content .folio {
+    .folio__text p{
+        position: relative;
+        display: block;
+
+        &:not(:last-child):after {
+            content: "";
+            position: absolute;
+            bottom: .2rem;
+            left: 10%;
+            height: .1rem;
+            width: 80%;
+            border-bottom: 1px solid #dedede;
+        }
+    }
+
+    .folio__gall {
+        img.folio__gall--img {
+            @include roundedCorners(.6rem);
+            width: 25rem;
+            transition: all .2s;
+            opacity: .7;
+            box-shadow: 0 .2rem .5rem rgba(0,0,0, .5);
+
+            &:hover {
+                opacity: 1;
+                transform: scale(1.05);
+                box-shadow: 0 .2rem 2rem rgba(0,0,0, .8);
+            }
         }
     }
 }
