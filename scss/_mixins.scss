@@ -11,3 +11,11 @@
     -moz-border-radius: $size;
     border-radius: $size;
 }
+
+@mixin cardHeaderImg($path) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($lightBlue, .2),
+        rgba($darkBlue, .3)
+    ), url($path);
+}
