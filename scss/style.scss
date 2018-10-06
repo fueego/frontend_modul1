@@ -142,7 +142,7 @@ header.main-header {
         position: relative;
 
         .title {
-            padding: 25rem 0 6rem 0;
+            padding: 19rem 0 6rem 0;
             width: 100%;
             
             h2 {
@@ -212,6 +212,92 @@ header.main-header {
                             opacity: .4;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    .bio {
+        width: 100%;
+        margin: 11rem 0;
+        text-align: center;
+
+        .title {
+            padding: 4rem 0;
+        }
+
+        .bio__content {
+            width: 60%;
+            margin: 0 auto;
+            //pochylenie, czemu nie ;)
+            transform: skewX(-4deg);
+            
+            & > div {
+                box-shadow: 0 2rem 9rem rgba(0,0,0, .2);
+                padding: 3rem;
+
+                &:not(:last-child) {
+                    margin-bottom: 8rem;
+                }
+
+                .bio__content--img {
+                    width: 15rem;
+                    height: 15rem;
+                    float: left;
+
+                    //dzięki tej metodzie nadamy kształt, do opływania tekstu (pierwszy parametr radious, kolejne parametry ustawiają nam srodek kola )
+                    //parametr ten będzie działał tylko, jeżeli pudełko ma zdefiniowane wymiary oraz floating
+                    -webkit-shape-outside: circle(50% at 50% 50%);
+                    shape-outside: circle(50% at 50% 50%);
+                    //nadamy kształt koła do naszego elementu
+                    -webkit-clip-path: circle(50% at 50% 50%);
+                    clip-path: circle(50% at 50% 50%);
+                    //dla elementów do, których zastosowalismy float najlepiej wypozycjonowac je za pomocą transform
+                    transform: translateX(-9%) translateY(5%) skewX(4deg);
+                    position: relative;
+
+                    figcaption {
+                        position: absolute;
+                        top: 50%;
+                        left:50%;
+                        transform: translateX(-50%) translateY(20%);
+                        color: $lightColor;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        text-align: center;
+                        opacity: 0;
+                        transition: all .5s;
+                        //backface-visibility - poprawia wszelkie niedoskonałosci podczas animacji, jak blur, jak trzęsienie podczas liniowego ruchu etc.
+                        backface-visibility: hidden;
+                    }
+
+                    img {
+                        width: 20rem;
+                        //ustawiamy poczatkowa wartosc scale na ciut wieksza, tak aby pozniej miec fajny efekt zoomowania
+                        transform: scale(1.4) translateX(-20px);;
+                        transition: all .3s;
+                    }
+                }
+
+                .bio__content--text {
+                    text-align: left;
+
+                    p {
+                        padding: 2rem 1.5rem 2rem 0;
+                    }
+                }
+            
+                //po najechaniu na element, .bio__content wskazujemy akcję dla figure.figcaption znajdującą się wewnątrz elementu bio__content
+                &:hover figure figcaption {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(-50%) skewX(4deg);
+                }
+
+                //animacja obrazka wewnatrz elementu figure
+                &:hover figure > img {
+                    transform: scale(1);
+                    //css niesie ze soba ciekawe wbudowane efekty / filtry np
+                    filter: blur(3px) brightness(80%);
                 }
             }
         }
