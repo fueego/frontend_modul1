@@ -1,5 +1,6 @@
 @import 'mixins';
 @import 'grid';
+@import 'animation';
 
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
@@ -9,6 +10,8 @@ $darkBlue: #204f9b;
 $fontColor: #969696;
 $lightColor: #fff;
 $darkColor: #666;
+$lightGrayColor: #dedede;
+$dangerColor: orangered;
 
 * {
     margin: 0px;
@@ -100,14 +103,14 @@ header.main-header {
             position: relative;
             display: block;
     
-            &:not(:last-child):after {
+            &:not(:last-child)::after {
                 content: "";
                 position: absolute;
                 bottom: .2rem;
                 left: 10%;
                 height: .1rem;
                 width: 80%;
-                border-bottom: 1px solid #dedede;
+                border-bottom: 1px solid $lightGrayColor;
             }
         }
     
@@ -201,7 +204,7 @@ header.main-header {
                     &:not(:last-child) {
                         padding-bottom: 1.1rem;
                         
-                        &:after {
+                        &::after {
                             content: '';
                             position: absolute;
                             bottom: .1rem;
@@ -298,6 +301,158 @@ header.main-header {
                     transform: scale(1);
                     //css niesie ze soba ciekawe wbudowane efekty / filtry np
                     filter: blur(3px) brightness(80%);
+                }
+            }
+        }
+    }
+
+    .formContainer {
+        width: 100%;
+        padding: 4rem;
+        background-image: linear-gradient(
+            to right bottom,
+            rgba($lightBlue, .9),
+            rgba($darkBlue, .9));
+
+        &--title {
+            padding: 4rem 0;
+            color: $lightColor;
+            text-align: center;
+        }
+
+        &--content {
+            @include roundedCorners(.3rem);
+            width: 60%;
+            margin: 0 auto;
+            background-image: linear-gradient(
+                to right bottom,    
+                rgba($lightBlue, .4),
+                rgba($darkBlue, .2)),
+                url(../img/form_bg.jpg);
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            box-shadow: 0 2rem 9rem rgba(0,0,0, .2);
+        }
+
+        .form {
+            padding: 2rem;
+            background-color: $lightColor;
+            clip-path: polygon(0 0, 60% 0, 50% 100%, 0 100%);
+            opacity: .9;
+
+            form {
+                width: 40rem;
+            }
+
+            &__group:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+
+            &__input {
+                // co istotne, elementy formularzy typu input nie dizedziczą rodziny czcionek, więc musimy powiedzieć bezposrednio przegladarce,
+                // skąd ma wziąc typ czcionki
+                @include roundedCorners(.3rem);
+                font-family: inherit;
+                color: $darkColor;
+                font-size: 1.5rem;
+                padding: 1.5rem 2rem;
+                border: 1px solid $lightGrayColor;
+                opacity: 1;
+                background-color: $lightColor;
+                width: 100%;
+                display: block;
+                transition: all .3s;
+
+                // usuwamy focus z zacznaczonego elementu
+                &:focus {
+                    outline: none;
+                    border-bottom: 1px solid $lightBlue;
+                    box-shadow: 0 .5rem 1.5rem rgba(0,0,0, .2);
+                }
+
+                // validacja przez kolory, jak zaznaczamy element to ma on swój focus, więc
+                &:focus:invalid {
+                    border-bottom: 1px solid $dangerColor;
+                    box-shadow: 0 .5rem 1.5rem rgba(0,0,0, .2);
+                }
+
+                &::-webkit-input-placeholder {
+                    color: darken($lightGrayColor, 20%);
+                }
+            }
+
+            label {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-top: .7rem;
+                display: block;
+                transition: all .2s;
+            }
+
+            &__input:placeholder-shown + label {
+                // samo opacity zostawia element na stronie www
+                opacity: 0;
+                // dodalismy visibility hidden w celu usunięcia elementu ale opacity musi być, bo visibility nie może być animowane
+                visibility: hidden;
+                transform: translateY(-4rem);
+            }
+
+            &__submit {
+                text-align: center;
+
+                a {
+                    @include roundedCorners(.3rem);
+                    position: relative;
+                    transition: all .2s;
+    
+                    &:link,
+                    &:visited {
+                        color: $lightColor;
+                        text-decoration: none;
+                        padding: 1.2rem;
+                        margin: 0px auto;
+                        text-align: center;
+                        display: inline-block;
+                        background-image: linear-gradient(
+                            to right bottom,    
+                            rgba($lightBlue, .9),
+                            rgba($darkBlue, .9)
+                        );
+                    }
+    
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 1rem 1.8rem rgba(0,0,0, .2);
+                    }
+    
+                    &:hover::after {
+                        transform: scale(1.1);
+                        opacity: 0;
+                    }
+    
+                    &:active {
+                        transform: translateY(-1px);
+                        box-shadow: 0 .8rem 1.6rem rgba(0,0,0, .3);
+                    }
+    
+                    &::after {
+                        @include roundedCorners(.3rem);
+                        content: "";
+                        position: absolute;
+                        display: inline-block;
+                        height: 100%;
+                        width: 100%;
+                        top: 0px;
+                        left: 0px;
+                        z-index: -1;
+                        transition: all .6s;
+                        background-image: linear-gradient(
+                            to right bottom,    
+                            rgba($lightBlue, .9),
+                            rgba($darkBlue, .9)
+                        );
+                    }
                 }
             }
         }

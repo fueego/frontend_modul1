@@ -1,0 +1,18 @@
+$darkBlue: #204f9b;
+
+@keyframes buttonanim {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        background-color: $darkBlue;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
