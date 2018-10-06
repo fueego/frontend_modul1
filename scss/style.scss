@@ -504,3 +504,144 @@ footer {
     }
 }
 
+.navigation {
+    &__check {
+        display: none;
+    }
+
+    &__check:checked ~ &__background {
+        transform: scale(80);
+    }
+
+    &__check:checked ~ &__nav {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__button {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        background-color: $lightColor;
+        position: fixed;
+        top: 3rem;
+        right: 3rem;
+        z-index: 13;
+        box-shadow: 0 .2rem 3rem rgba(0,0,0, .2);
+        cursor: pointer;
+    }
+
+    &__background {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 4rem;
+        right: 4rem;
+        // różnica pomiędzy linear-gradien to ta, że radial rozchodzi się koliscie
+        background-image: radial-gradient($lightBlue, $darkBlue);
+        z-index: 11;
+        // po dodaniu cubic-bezire, jestesmy w stanie dać odpowiedniej szybkosci dla przebiegu animacji
+        transition: all .5s cubic-bezier(.33,.48,.02,1.1);
+    }
+
+    &__nav {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        z-index: 12;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s;
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item {
+        padding: 2rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            font-size: 2.4rem;
+            font-weight: normal;
+            color: $lightColor;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: .3rem;
+            padding: .8rem 1.6rem;
+            background-image: linear-gradient(90deg, transparent 0%, transparent 50%, $lightColor 50%);
+            background-size: 203%;
+            transition: all .3s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $footerBgDarkColor;
+        }
+    }
+
+    span.hamburger-icon {
+        background-color: $darkBlue;
+        width: 3.5rem;
+        height: .25rem;
+        z-index: 20;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        &::before {
+            content: '';
+            background-color: inherit;
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: -.8rem;
+            transition: all .1s;
+        }
+
+        &::after {
+            content: '';
+            background-color: inherit;
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: .8rem;
+            transition: all .1s;
+        }
+    }
+
+    &__check:checked ~ label span {
+        background-color: transparent;
+    }
+
+    &__check:checked ~ label span::after,
+    &__check:checked ~ label span::before {
+        width: 3.5rem;
+        top: 0;
+    }
+
+    &__check:checked ~ label span::after {
+        background-color: $darkBlue;
+        transform: rotate(45deg);
+    }
+
+    &__check:checked ~ label span::before {
+        background-color: $darkBlue;
+        transform: rotate(-45deg);
+    }
+}
