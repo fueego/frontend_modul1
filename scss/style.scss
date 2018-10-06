@@ -12,6 +12,8 @@ $lightColor: #fff;
 $darkColor: #666;
 $lightGrayColor: #dedede;
 $dangerColor: orangered;
+$footerBgLightColor: #083072;
+$footerBgDarkColor: #0a1f42;
 
 * {
     margin: 0px;
@@ -308,14 +310,14 @@ header.main-header {
 
     .formContainer {
         width: 100%;
-        padding: 4rem;
+        padding: 10rem 0;
         background-image: linear-gradient(
             to right bottom,
             rgba($lightBlue, .9),
             rgba($darkBlue, .9));
 
         &--title {
-            padding: 4rem 0;
+            padding: 0 0 2rem 0;
             color: $lightColor;
             text-align: center;
         }
@@ -455,8 +457,50 @@ header.main-header {
                     }
                 }
             }
+        }        
+    }
+}
+
+footer {
+    .footer {
+        padding: 4rem;
+        width: 100%;
+        background-image: linear-gradient(
+            to right bottom,    
+            rgba($footerBgLightColor, .8),
+            rgba($footerBgDarkColor, .7)
+        ), url(../img/footer_bg.jpg);
+        background-size: cover;
+        background-position: center;
+
+        .footer__social {
+            ul {
+                text-align: center;
+
+                li {
+                    color: $lightColor;
+                    list-style-type: none;
+                    display: inline-block;
+                    padding: 0 2rem;
+                    
+                    i {
+                        transition: all .3s;
+                        opacity: .6;
+                        cursor: pointer;
+                    }
+
+                    i:hover {
+                        opacity: .9;
+                    }
+                }
+            }
+        }
+
+        .footer__copy {
+            color: $lightColor;
+            text-align: center;
+            padding: 3rem 0 0;
         }
     }
-
 }
 
