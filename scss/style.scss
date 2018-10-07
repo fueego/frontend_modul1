@@ -26,7 +26,24 @@ $footerBgDarkColor: #0a1f42;
 html {
     //font-size: 10px; - ustawienie na sztywno wartosci 10px w html, wytnie w pien, mozliwosc zmiany defaultowej wielkosci czcionki dla przegladarki
     //zamiast tego zastosujemy procenty ;), 
-    font-size: 62.5% //dalej jednak chcemy latwo obliczac 1rem, powinien dawac 10px, zatem 10 px z 16 to 62,5%
+    font-size: 62.5%; //dalej jednak chcemy latwo obliczac 1rem, powinien dawac 10px, zatem 10 px z 16 to 62,5%
+
+    @include respond2(bigScreen) {
+        font-size: 75%;// 1 rem = 12px --> 12/16 * 100 = 75%
+    }
+
+    @include respond2(tabLand) {
+        font-size: 56.25%; // 1 rem = 9px --> 9/16 * 100 = 56.25%
+    }
+
+    @include respond2(tabPort) {
+        font-size: 50%; // 1 rem = 8px --> 8/16 * 100 = 50%
+    }
+
+    @include respond2(phone) {
+        font-size: 43.75%;// 1rem = 7px --> 7/16 * 100 = 
+    }
+
 }
 
 body {
@@ -131,11 +148,35 @@ header.main-header {
                 }
             }
         }
+
+        .col-1-2 {
+            @include respond2(tabLand) {
+                width: 100%;
+                padding: 0 20rem;
+            }
+        }
+
+        .col-1-2 .folio__gall {
+            @include respond2(tabLand) {
+                .col-1-2 {
+                    width: 45%;
+                    padding: 5rem;
+                }
+            }
+
+            @include respond2(tabPort) {
+                .col-1-2 {
+                    width: 100%;
+                    padding: 2rem 0;
+                    text-align: center;
+                }
+            }
+        }
     }
 
     .offer {
         width: 100%;
-        height: 85vh;
+        height: 95vh;
         background-image: linear-gradient(
             to right bottom,
             rgba($lightBlue, .6),
@@ -147,7 +188,7 @@ header.main-header {
         position: relative;
 
         .title {
-            padding: 19rem 0 6rem 0;
+            padding: 16% 0 6rem 0;
             width: 100%;
             
             h2 {
@@ -220,6 +261,55 @@ header.main-header {
                 }
             }
         }
+
+        @include respond2(bigScreen) {
+            .title {
+                padding: 13% 0 6rem 0;
+            }
+        }
+
+        @include respond2(tabLand) {
+            .title {
+                padding: 24% 0 6rem 0;
+            }
+        }
+
+        @include respond2(tabPort) {
+            .title {
+                padding: 36% 0 6rem 0;
+            }
+
+            .col-1-3 {
+                width: 33%;
+                margin: 2rem auto;
+            }
+        }
+
+        @include respond2(phone) {
+            
+            text-align: center;
+
+            .col-1-3 {
+                width: 50%;
+                margin: 2rem auto;
+                float: none;
+            }
+            
+            .card {
+                height: 22rem;
+            }
+
+            .card__header {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 35%);
+            }
+
+            .card__main {
+                ul {
+                    display: none;
+                }
+            }
+        }
+
     }
 
     .bio {
@@ -344,7 +434,7 @@ header.main-header {
             opacity: .9;
 
             form {
-                width: 40rem;
+                width: 50%;
             }
 
             &__group:not(:last-child) {
@@ -457,6 +547,14 @@ header.main-header {
                     }
                 }
             }
+
+            @include respond2(tabPort) {
+                clip-path: unset;
+
+                & > form {
+                    width: 100%;
+                }
+            }
         }        
     }
 }
@@ -546,8 +644,8 @@ footer {
     }
 
     &__nav {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         position: fixed;
         top: 0;
         right: 0;

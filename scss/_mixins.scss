@@ -6,10 +6,10 @@
     }
 }
 
-@mixin roundedCorners($size) {
-    -webkit-border-radius: $size;
-    -moz-border-radius: $size;
-    border-radius: $size;
+@mixin roundedCorners($device) {
+    -webkit-border-radius: $device;
+    -moz-border-radius: $device;
+    border-radius: $device;
 }
 
 @mixin cardHeaderImg($path) {
@@ -18,4 +18,41 @@
         rgba($lightBlue, .2),
         rgba($darkBlue, .3)
     ), url($path);
+}
+
+/* Media queries */
+/*
+    0 - 600px [phone]
+    600 - 900px [tablet portrait]
+    900px -1200px [tablet landscape]
+    1200 - 1800px [typical screen - ]
+    1800px [big screen]
+*/
+
+/* dla media queries stosujemy emy, jako iż badania wyjadaczy branzy swiadczą w ten sposob*/
+/* 1em odpowiada defaultowej wartosci 16 px, chyba ze ktos zmienil swoje ustawienia */
+@mixin respond2($device) {
+    @if $device == phone {
+        @media (max-width: 37.5em) { // 600px
+            @content
+        }
+    };
+
+    @if $device == tabPort {
+        @media (max-width: 56.25em) { //900px
+            @content
+        }
+    };
+
+    @if $device == tabLand {
+        @media (max-width: 75em) { //1200px
+            @content
+        }
+    };
+
+    @if $device == bigScreen {
+        @media (min-width: 112.5em) { //1800px
+            @content
+        }
+    }
 }
