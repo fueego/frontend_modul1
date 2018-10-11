@@ -157,14 +157,14 @@ header.main-header {
     text-align: center; } }
 .main-content .offer {
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   background-image: linear-gradient(to right bottom, rgba(42, 104, 204, 0.6), #204f9b), url(../img/middle_bg.jpg);
   background-size: cover;
   background-position: center;
   clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
   position: relative; }
   .main-content .offer .title {
-    padding: 16% 0 6rem 0;
+    padding: 28rem 0 6rem 0;
     width: 100%; }
     .main-content .offer .title h2 {
       color: #fff;
@@ -174,7 +174,7 @@ header.main-header {
     -moz-border-radius: 0.6rem;
     border-radius: 0.6rem;
     background-color: rgba(255, 255, 255, 0.8);
-    height: 40rem;
+    height: 30rem;
     overflow: hidden;
     position: relative;
     box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.4); }
@@ -183,7 +183,7 @@ header.main-header {
       -moz-border-radius: 0.3rem;
       border-radius: 0.3rem;
       position: absolute;
-      top: 15rem;
+      top: 8rem;
       right: 2rem;
       background: #204f9b;
       z-index: 2;
@@ -194,7 +194,7 @@ header.main-header {
       background-size: cover;
       background-position: bottom;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
-      height: 18rem; }
+      height: 10rem; }
       .main-content .offer .card .card__header.header1 {
         background-image: linear-gradient(to right bottom, rgba(42, 104, 204, 0.2), rgba(32, 79, 155, 0.3)), url("../img/engine1_small.jpg"); }
       .main-content .offer .card .card__header.header2 {
@@ -220,13 +220,13 @@ header.main-header {
             opacity: .4; }
   @media (min-width: 112.5em) {
     .main-content .offer .title {
-      padding: 13% 0 6rem 0; } }
+      padding: 26rem 0 6rem 0; } }
   @media (max-width: 75em) {
     .main-content .offer .title {
-      padding: 24% 0 6rem 0; } }
+      padding: 33rem 0 6rem 0; } }
   @media (max-width: 56.25em) {
     .main-content .offer .title {
-      padding: 36% 0 6rem 0; }
+      padding: 29rem 0 6rem 0; }
     .main-content .offer .col-1-3 {
       width: 33%;
       margin: 2rem auto; } }
@@ -239,8 +239,11 @@ header.main-header {
         float: none; }
       .main-content .offer .card {
         height: 22rem; }
+        .main-content .offer .card .card__title {
+          top: 15rem; }
       .main-content .offer .card__header {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 35%); }
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 35%);
+        height: 18rem !important; }
       .main-content .offer .card__main ul {
         display: none; } }
 .main-content .bio {
